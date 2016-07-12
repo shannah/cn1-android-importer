@@ -1,7 +1,6 @@
 AndroidImporterTestBed/res
 AndroidImporterTestBed/src/*.bak
 build
-dist
 private
 AndroidImporterTestBed/lib/*.jar
 BackButtonTest
