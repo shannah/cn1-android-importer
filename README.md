@@ -14,3 +14,11 @@ java -jar AndroidImporter.jar import-project [options]
  -r,--cn1-resource-file            Path to CN1 output .res file.  Defaults
                                    to theme.res in project dir
 ~~~~
+
+**Example running with Test inputs**
+
+~~~~
+$ java -jar dist/AndroidImporter.jar import-project -i test_inputs/k9mail -o AndroidImporterTestBed/ -p ca.weblite.testui
+~~~~
+
+NOTE:  You'll need to specify the path to ant via the ANT_HOME environment variable or java system property before running this.

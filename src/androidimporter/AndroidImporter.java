@@ -30,6 +30,9 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.tools.ant.DefaultLogger;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.ProjectHelper;
 import org.xml.sax.SAXException;
 
 /**
@@ -60,6 +63,12 @@ public class AndroidImporter {
     
     
     public static void main(String[] args) throws ParseException  {
+        //"/usr/local/apache-ant/bin/ant"
+        String antPath = System.getProperty("ANT_PATH", System.getenv("ANT_PATH"));
+        if (antPath == null || !new File(antPath).exists()) {
+            throw new RuntimeException("Cannot find ant at "+antPath+".  Please specify location to ant via the ANT_PATH environment variable or java system property.");
+        }
+        
         Options opts = new Options()
                 .addOption("i", "android-resource-dir", true, "Android project res directory path")
                 .addOption("o", "cn1-project-dir", true, "Path to the CN1 output project directory.")
@@ -119,7 +128,8 @@ public class AndroidImporter {
                     System.out.println("Resource file: "+resFile.getAbsolutePath());
                     System.out.println("Java Package: "+line.getOptionValue("package"));
                     AndroidProjectImporter.importProject(resDir, projDir, resFile, line.getOptionValue("package"));
-                    Runtime.getRuntime().exec(new String[]{"/usr/local/apache-ant/bin/ant", "init"}, new String[]{}, resFile.getParentFile().getParentFile());
+                    Runtime.getRuntime().exec(new String[]{antPath, "init"}, new String[]{}, resFile.getParentFile().getParentFile());
+                    //runAnt(new File(resFile.getParentFile().getParentFile(), "build.xml"), "init");
                     System.exit(0);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -248,5 +258,7 @@ public class AndroidImporter {
         }
         return null;
     }
+    
+    
     
 }

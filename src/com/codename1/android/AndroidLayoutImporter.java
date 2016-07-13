@@ -403,7 +403,7 @@ public class AndroidLayoutImporter {
         if (height < 1) {
             height = 1;
         }
-        System.out.println("Creating blank image "+width+"x"+height+" for "+widthStr+"x"+heightStr);
+        //System.out.println("Creating blank image "+width+"x"+height+" for "+widthStr+"x"+heightStr);
         String imgName = name + width + "x" + height + ".png";
         Image im = outputResources.getImage(imgName);
         if (im != null) {
@@ -667,7 +667,7 @@ public class AndroidLayoutImporter {
         
         String matchingId = findMatchingId(id, theme);
         if (matchingId != null) {
-            System.out.println("Found UIID with identical styles to "+id+".  Removing "+id+" and just using "+matchingId);
+            //System.out.println("Found UIID with identical styles to "+id+".  Removing "+id+" and just using "+matchingId);
             // There is already a UIID that is identical to this one, so let's just
             // use that.
             out.setAttribute("uiid", matchingId);
