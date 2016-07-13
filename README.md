@@ -22,3 +22,15 @@ $ java -jar dist/AndroidImporter.jar import-project -i test_inputs/k9mail -o And
 ~~~~
 
 NOTE:  You'll need to specify the path to ant via the ANT_HOME environment variable or java system property before running this.
+
+## Features
+
+* Imports all localized strings into a resource bundle named "strings" inside the Codename One resource file.
+* Imports all images from the Android project into the Codename One resource file.
+* Imports all android layouts into the Codename One project as .gui files that can be edited in the Codename One GUI Builder.
+
+## Project Status
+
+This is very early stages, and the result isn't very good.  Importing of strings and images is pretty good, but layouts will only get you to a
+starting point from which you'll still need to to quite a bit of work.
+
